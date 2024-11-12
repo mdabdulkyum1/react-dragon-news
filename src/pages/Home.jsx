@@ -1,6 +1,9 @@
 import Logo from "../assets/logo.png";
 import BreakingNews from "../components/BreakingNews/BreakingNews";
-import HomeNavbar from './../components/HomeNavbar/HomeNavbar';
+import LoginWith from "../components/LoginWith/LoginWith";
+import QZone from "../components/QZone/QZone";
+import SocialLinks from "../components/SocialLinks/SocialLinks";
+import HomeNavbar from "./../components/HomeNavbar/HomeNavbar";
 
 function Home() {
   return (
@@ -13,10 +16,25 @@ function Home() {
             <h1 className="text-2xl">Tuesday, November 12, 2024</h1>
           </div>
         </div>
-        <div className="w-2/3 mx-auto">
+        <div className="lg:w-2/3 mx-auto">
           <BreakingNews></BreakingNews>
         </div>
         <HomeNavbar></HomeNavbar>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-4 px-6 lg:px-0">
+        <div className="">category</div>
+        <div className="col-span-2">news here</div>
+        <div className="">
+          <h1 className="text-3xl mb-3">Login With</h1>
+
+          <LoginWith></LoginWith>
+          <div className="my-16"></div>
+          <SocialLinks></SocialLinks>
+
+          <div className="my-16">
+             <QZone></QZone>
+          </div>
+        </div>
       </div>
     </>
   );
