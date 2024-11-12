@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
 
@@ -47,8 +47,9 @@ function Navbar() {
       </div>
       <div className="navbar-end">
         
-        <button className="btn">Sing Up</button>
-        <button className="btn">Login</button>
+        <Link to={'/register'} className="btn">Sing Up</Link>
+        <Link to={'/login'} className="btn">Log In</Link>
+
         
       {/* <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
