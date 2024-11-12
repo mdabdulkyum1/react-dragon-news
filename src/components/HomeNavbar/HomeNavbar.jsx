@@ -1,16 +1,14 @@
-import { NavLink } from "react-router-dom";
-
-function Navbar() {
+import { Link, NavLink } from "react-router-dom";
 
 
+function HomeNavbar() {
 
   const links = <>
-    <li><NavLink to={'/'}>Home</NavLink></li>
-    <li><NavLink to={'/profile'}>Profile</NavLink></li>
-    <li><NavLink to={'/about'}>About</NavLink></li>
-    <li><NavLink to={'/News'}>news</NavLink></li>
-    <li><NavLink to={'/login'}>Login</NavLink></li>
-  </>
+  <li><NavLink to={'/'}>Home</NavLink></li>
+  <li><NavLink to={'/profile'}>Profile</NavLink></li>
+  <li><NavLink to={'/about'}>About</NavLink></li>
+  <li><NavLink to={'/login'}>Login</NavLink></li>
+</>
   return (
     <nav className="navbar bg-base-100">
       <div className="navbar-start">
@@ -35,10 +33,11 @@ function Navbar() {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            {links}
+          
+          {links}
+
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Dragon News</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -47,10 +46,7 @@ function Navbar() {
       </div>
       <div className="navbar-end">
         
-        <button className="btn">Sing Up</button>
-        <button className="btn">Login</button>
-        
-      {/* <div className="dropdown dropdown-end">
+           <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           <img
@@ -71,11 +67,14 @@ function Navbar() {
         <li><a>Settings</a></li>
         <li><a>Logout</a></li>
       </ul>
-      </div> */}
- 
+           </div>
+
+           <Link to={'/login'} className="btn">Log In</Link>
+
+
       </div>
     </nav>
   );
 }
 
-export default Navbar;
+export default HomeNavbar;

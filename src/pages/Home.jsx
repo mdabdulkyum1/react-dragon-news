@@ -1,5 +1,6 @@
 import Logo from "../assets/logo.png";
 import BreakingNews from "../components/BreakingNews/BreakingNews";
+import HomeNavbar from './../components/HomeNavbar/HomeNavbar';
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
         <div className="w-2/3 mx-auto">
           <BreakingNews></BreakingNews>
         </div>
+        <HomeNavbar></HomeNavbar>
       </div>
     </>
   );
