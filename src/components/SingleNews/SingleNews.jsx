@@ -2,6 +2,9 @@ import PropTypes from "prop-types";
 import { useEffect, useRef, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { FaEye } from "react-icons/fa";
+import { IoShareSocialSharp } from "react-icons/io5";
+
+
 
 function SingleNews({ news }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +31,9 @@ function SingleNews({ news }) {
             <p>{author.published_date}</p>
           </div>
         </div>
-        <div className="">share</div>
+        <div className="">
+          <IoShareSocialSharp />
+        </div>
       </div>
       <div className="">
         <h1 className="text-xl font-bold my-2">{title}</h1>
