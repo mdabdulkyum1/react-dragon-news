@@ -1,5 +1,6 @@
 import Logo from "../assets/logo.png";
 import BreakingNews from "../components/BreakingNews/BreakingNews";
+import CategoriesNews from "../components/CategoriesNews/CategoriesNews";
 import LoginWith from "../components/LoginWith/LoginWith";
 import QZone from "../components/QZone/QZone";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
@@ -22,7 +23,9 @@ function Home() {
         <HomeNavbar></HomeNavbar>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-4 px-6 lg:px-0">
-        <div className="">category</div>
+        <div className="">
+            <CategoriesNews></CategoriesNews>
+        </div>
         <div className="col-span-2">news here</div>
         <div className="">
           <h1 className="text-3xl mb-3">Login With</h1>
