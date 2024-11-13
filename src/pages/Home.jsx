@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Logo from "../assets/logo.png";
 import BreakingNews from "../components/BreakingNews/BreakingNews";
 import CategoriesNews from "../components/CategoriesNews/CategoriesNews";
@@ -26,7 +27,10 @@ function Home() {
         <div className="">
             <CategoriesNews></CategoriesNews>
         </div>
-        <div className="col-span-2">news here</div>
+        <div className="col-span-2">
+        <h3 className="font-bold text-xl mb-4">Dragon News Home</h3>
+          <Outlet></Outlet>
+        </div>
         <div className="">
           <h1 className="text-3xl mb-3">Login With</h1>
 

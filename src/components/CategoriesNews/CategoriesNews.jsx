@@ -18,7 +18,7 @@ function CategoriesNews() {
         <ul className="menu">
           {categories.map((category) => (
             <li key={category.category_id}>
-              <NavLink to={`/${category.category_id}`} className="">
+              <NavLink to={`/category/${category.category_id}`} className="">
                 {category.category_name}
               </NavLink>
             </li>
