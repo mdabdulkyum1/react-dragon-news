@@ -1,12 +1,13 @@
-// import { useContext } from "react";
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-// import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 
 function HomeNavbar() {
 
-  // const {  } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
+
 
   const links = <>
   <li><NavLink to={'/'}>Home</NavLink></li>
@@ -57,7 +58,7 @@ function HomeNavbar() {
           <img
             title="Md Abdul Kyum"
             alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            src={currentUser?.photoURL || "https://i.ibb.co.com/p0fqz2f/Default-Profile.png"} />
         </div>
       </div>
       <ul
