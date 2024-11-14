@@ -6,7 +6,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 function HomeNavbar() {
 
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, logOut } = useContext(AuthContext);
 
 
   const links = <>
@@ -71,7 +71,7 @@ function HomeNavbar() {
           </a>
         </li>
         <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+        <li><a onClick={logOut}>Logout</a></li>
       </ul>
            </div>
 

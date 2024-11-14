@@ -59,7 +59,7 @@ function SingleNews({ news }) {
             <ReactStars
               edit={false}
               count={5}
-              value={rating.number}
+              value={rating?.number || 0}
               size={24}
               isHalf={true}
               emptyIcon={<i className="far fa-star"></i>}
