@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom"
 import Navbar from "../../components/Navbar/Navbar"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/firebase.init";
 
 
 function Register() {
+const [success, setSuccess] = useState('');
+const [error, setError] = useState('');
+
 
   const { createUser } = useContext(AuthContext);
 
@@ -18,19 +21,24 @@ function Register() {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
+    setSuccess("");
+    setError("");
+
+
+
     createUser(email, password)
     .then((result)=>{
         console.log(result.user)
-        
+        setSuccess("Register successfully!")
         updateProfile(auth.currentUser, {
           displayName: name, photoURL: photo
         }).then(()=>{
-            console.log("success")
+
         }).catch((error)=> {
-      console.log("ERROR", error.massage)
+          setError(error.massage)
     })
     }).catch((error)=> {
-      console.log("ERROR", error.massage)
+        setError(error.massage)
     })
 
     e.target.reset();
@@ -74,6 +82,12 @@ function Register() {
         </label>
         <input type="password" placeholder="password" name="password" className="input input-bordered" required />
       </div>
+      {
+        success && <p className="text-green-600">{success}</p>
+      }
+      {
+        error && <p className="text-red-600">{error}</p>
+      }
       <div className="form-control mt-6">
         <button className="btn btn-primary">Register</button>
       </div>
