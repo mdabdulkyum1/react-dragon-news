@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import Root from "../layout/Root";
 import Home from './../pages/Home';
 import ErrorPage from "../pages/ErrorPage";
@@ -16,6 +16,10 @@ export const router = createBrowserRouter([
             path: "/",
             element: <Home></Home>,
             children: [
+              {
+                path: "",
+                element: <Navigate to="category/01"></Navigate>
+              },
               {
                 path: "category/:id",
                 element: <NewsCart></NewsCart>,
