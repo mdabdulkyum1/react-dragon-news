@@ -8,6 +8,7 @@ import NewsCart from "../components/NewsCart/NewsCart";
 import About from "../pages/About";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../pages/Profile";
+import SingleNews from "../pages/SingleNews/SingleNews";
 
 
 export const router = createBrowserRouter([
@@ -31,6 +32,13 @@ export const router = createBrowserRouter([
               }
             ]
         }, 
+        {
+          path: "news/:id",
+          element: <PrivateRoute><SingleNews></SingleNews></PrivateRoute>,
+          loader: ({ params })=> {
+           return fetch(`https://openapi.programming-hero.com/api/news/${params.id}`)
+          }
+        },
         {
           path: "login",
           element: <Login></Login>

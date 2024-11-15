@@ -1,24 +1,18 @@
 import { Outlet } from "react-router-dom";
-import Logo from "../assets/logo.png";
 import BreakingNews from "../components/BreakingNews/BreakingNews";
 import CategoriesNews from "../components/CategoriesNews/CategoriesNews";
 import LoginWith from "../components/LoginWith/LoginWith";
 import QZone from "../components/QZone/QZone";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
 import HomeNavbar from "./../components/HomeNavbar/HomeNavbar";
-import moment from "moment";
+import Header from "../components/Header/Header";
+
 
 function Home() {
   return (
     <>
       <div className="">
-        <div className="flex justify-center">
-          <div className="text-center">
-            <img src={Logo} alt="Logo for Dragon news" />
-            <h3>Journalism Without Fear or Favour</h3>
-            <h1 className="text-2xl">{moment().format("dddd, MMMM Do YYYY")}</h1>
-          </div>
-        </div>
+        <Header></Header>
         <div className="lg:w-2/3 mx-auto">
           <BreakingNews></BreakingNews>
         </div>

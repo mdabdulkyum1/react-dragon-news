@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { FaEye } from "react-icons/fa";
 import { IoShareSocialSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 
 
@@ -20,8 +21,10 @@ function SingleNews({ news }) {
     }
   }, []);
 
-  const { author, details, title, image_url, rating, total_view } = news;
+  const { _id , author, details, title, image_url, rating, total_view } = news;
   return (
+    <Link to={`/news/${_id}`}>
+    
     <div className="mx-6">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-3">
@@ -73,6 +76,7 @@ function SingleNews({ news }) {
         </div>
       </div>
     </div>
+    </Link>
   );
 }
 
