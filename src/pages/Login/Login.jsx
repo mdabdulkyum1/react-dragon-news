@@ -3,10 +3,18 @@ import Navbar from "../../components/Navbar/Navbar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
+import { FaEye } from "react-icons/fa";
+import { IoIosEyeOff } from "react-icons/io";
 
 function Login() {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+
+
+  const handelShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const notify = () => {
     toast.success(`Login successfully!!!`, {
@@ -70,18 +78,26 @@ function Login() {
             <label className="label">
               <span className="label-text">Password</span>
             </label>
+
+            <label className="input input-bordered flex items-center gap-2">
             <input
-              type="password"
-              name="password"
+              type={`${showPassword ? "text" : "password"}`}
               placeholder="password"
-              className="input input-bordered"
+              name="password"
+              className="grow"
               required
             />
-            <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
-                Forgot password?
-              </a>
+
+      <span onClick={handelShowPassword}>
+        {showPassword ? (
+          <FaEye className="cursor-pointer" />
+        ) : (
+          <IoIosEyeOff className="cursor-pointer" />
+        )}
+      </span>
+
             </label>
+            
           </div>
           {success && <p className="text-green-600">{success}</p>}
           {error && (
