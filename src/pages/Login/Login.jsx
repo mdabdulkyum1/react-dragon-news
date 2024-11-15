@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -11,6 +11,8 @@ function Login() {
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
+  const location = useLocation();
+  console.log(location.state)
 
   const handelShowPassword = () => {
     setShowPassword(!showPassword);
@@ -46,7 +48,7 @@ function Login() {
         notify();
         setLoading(false)
         setSuccess("Login successfully!!!");
-        navigate("/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         setError(error);

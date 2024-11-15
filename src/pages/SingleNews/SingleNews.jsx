@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useParams } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
 import Header from "../../components/Header/Header";
 import QZone from "../../components/QZone/QZone";
 import SocialLinks from './../../components/SocialLinks/SocialLinks';
@@ -10,8 +10,6 @@ function SingleNews() {
   const data = useLoaderData();
   const news = data.data[0];
 
-  const params = useParams();
-  console.log(params)
 
 
   return (
