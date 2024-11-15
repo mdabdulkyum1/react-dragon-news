@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from './../firebase/firebase.init';
 
@@ -9,7 +9,7 @@ function AuthProvider(props = {}) {
 // state manege here
 const [currentUser, setCurrentUser] = useState(null);
 const [loading, setLoading] = useState(true);
-
+console.log(currentUser)
 
 const createUser = (email, password) => {
   setLoading(true)
@@ -19,6 +19,10 @@ const createUser = (email, password) => {
 const signInUser = (email, password) => {
   setLoading(true)
   return signInWithEmailAndPassword(auth, email, password);
+}
+
+const verifyEmail = (email) => {
+   return sendPasswordResetEmail(auth, email)
 }
 
 const logOut = () => {
@@ -58,7 +62,8 @@ useEffect(()=> {
     signInUser,
     logOut,
     loading,
-    setLoading
+    setLoading,
+    verifyEmail
   }
   return (
     <AuthContext.Provider value={authInfo}>

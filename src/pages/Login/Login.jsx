@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
 import { FaEye } from "react-icons/fa";
@@ -10,9 +10,9 @@ function Login() {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
-
+  const emailRef = useRef();
   const location = useLocation();
-  console.log(location.state)
+ 
 
   const handelShowPassword = () => {
     setShowPassword(!showPassword);
@@ -31,7 +31,7 @@ function Login() {
     });
   };
 
-  const { signInUser, setLoading } = useContext(AuthContext);
+  const { signInUser, setLoading, verifyEmail } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -57,6 +57,21 @@ function Login() {
     e.target.reset();
   };
 
+
+  const resetPassword = () => {
+    const email = emailRef?.current?.value;
+    verifyEmail(email)
+    .then(() => {
+      setSuccess("Password reset email sent!")
+      // mu3sU7TfMQQziCR
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage)
+    });
+  }
+
   return (
     <>
       <Navbar></Navbar>
@@ -70,6 +85,7 @@ function Login() {
               <span className="label-text">Email</span>
             </label>
             <input
+            ref={emailRef}
               type="email"
               name="email"
               placeholder="email"
@@ -102,6 +118,9 @@ function Login() {
             </label>
             
           </div>
+          <label className="label">
+            <button onClick={resetPassword} href="#" className="label-text-alt link link-hover">Forgot password?</button>
+          </label>
           {success && <p className="text-green-600">{success}</p>}
           {error && (
             <p className="text-red-600">Login Failed :( Please Try again...</p>
