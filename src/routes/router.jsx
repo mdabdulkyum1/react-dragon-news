@@ -6,6 +6,8 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import NewsCart from "../components/NewsCart/NewsCart";
 import About from "../pages/About";
+import PrivateRoute from "./PrivateRoute";
+import Profile from "../pages/Profile";
 
 
 export const router = createBrowserRouter([
@@ -40,6 +42,10 @@ export const router = createBrowserRouter([
         {
           path: "about",
           element: <About></About>
+        },
+        {
+          path: "profile",
+          element: <PrivateRoute><Profile></Profile></PrivateRoute>
         },
         {
           path: "*",

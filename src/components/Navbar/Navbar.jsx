@@ -1,15 +1,28 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 function Navbar() {
 
+  const { currentUser, logOut }  = useContext(AuthContext);
 
+  const handleLogOut = () => {
+    logOut();
+    alert("You have been logged out.");
+  };
 
   const links = <>
     <li><NavLink to={'/'}>Home</NavLink></li>
+    {
+      currentUser &&
     <li><NavLink to={'/profile'}>Profile</NavLink></li>
+    }
     <li><NavLink to={'/about'}>About</NavLink></li>
     <li><NavLink to={'/News'}>news</NavLink></li>
+    {
+      !currentUser &&
     <li><NavLink to={'/login'}>Login</NavLink></li>
+    }
   </>
   return (
     <nav className="navbar bg-base-100">
@@ -46,33 +59,41 @@ function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
+
+
+
+        {
+          currentUser ? <>
+          <div className="dropdown dropdown-end">
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+            <div className="w-10 rounded-full">
+              <img
+                title={currentUser.displayName}
+                alt={currentUser.displayName}
+                src={
+                  currentUser?.photoURL ||
+                  "https://i.ibb.co.com/p0fqz2f/Default-Profile.png"
+                } />
+            </div>
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+            <li><a>Settings</a></li>
+            <li onClick={handleLogOut}><a>Logout</a></li>
+          </ul>
+          </div>
+          
+          </> :
+          <>
+          
+          <Link to={'/register'} className="btn">Sing Up</Link>
+          <Link to={'/login'} className="btn">Log In</Link>
+          </>
+         }
         
-        <Link to={'/register'} className="btn">Sing Up</Link>
-        <Link to={'/login'} className="btn">Log In</Link>
 
         
-      {/* <div className="dropdown dropdown-end">
-      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img
-            title="Md Abdul Kyum"
-            alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-        </div>
-      </div>
-      <ul
-        tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li>
-          <a className="justify-between">
-            Profile
-            <span className="badge">New</span>
-          </a>
-        </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
-      </ul>
-      </div> */}
  
       </div>
     </nav>

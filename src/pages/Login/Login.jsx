@@ -29,7 +29,7 @@ function Login() {
     });
   };
 
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, setLoading } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -44,6 +44,7 @@ function Login() {
     signInUser(email, password)
       .then(() => {
         notify();
+        setLoading(false)
         setSuccess("Login successfully!!!");
         navigate("/");
       })

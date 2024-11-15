@@ -8,13 +8,16 @@ function AuthProvider(props = {}) {
   const {children} = props || {};
 // state manege here
 const [currentUser, setCurrentUser] = useState(null);
+const [loading, setLoading] = useState(true);
 
 
 const createUser = (email, password) => {
+  setLoading(true)
   return createUserWithEmailAndPassword(auth, email, password);
 }
 
 const signInUser = (email, password) => {
+  setLoading(true)
   return signInWithEmailAndPassword(auth, email, password);
 }
 
@@ -31,6 +34,7 @@ const logOut = () => {
 useEffect(()=> {
   const unSubscribe =onAuthStateChanged(auth, (user) => {
     if(user){
+      setLoading(false)
       setCurrentUser(user);
     }
   })
@@ -52,7 +56,9 @@ useEffect(()=> {
     setCurrentUser,
     createUser,
     signInUser,
-    logOut
+    logOut,
+    loading,
+    setLoading
   }
   return (
     <AuthContext.Provider value={authInfo}>
